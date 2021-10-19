@@ -1,11 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useHistory } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import useFirebase from "../../hooks/useFirebase";
 import "./Login.css";
 
 const Login = () => {
   const { signInUsingGoogle } = useAuth();
+  const location = useLocation();
+  const history = useHistory();
+  const redirect_uri = location.state?.from || "/shop";
+
+  const handleGoogleSignIn = () => {
+    signInUsingGoogle().then((result) => {
+      history.push(redirect_uri);
+    });
+  };
   return (
     <div className="login-form">
       <div className="container">
@@ -35,7 +43,7 @@ const Login = () => {
             new to ema-john? <Link to="/register">Create Account</Link>
           </p>
           <div>-------------or-------------</div>
-          <button onClick={signInUsingGoogle} className="btn-regular">
+          <button onClick={handleGoogleSignIn} className="btn-regular">
             Google Sign In
           </button>
         </div>
