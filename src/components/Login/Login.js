@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 import useFirebase from "../../hooks/useFirebase";
 import "./Login.css";
 
 const Login = () => {
-  const { user, signInUsingGoogle } = useFirebase();
+  const { signInUsingGoogle } = useAuth();
   return (
     <div className="login-form">
       <div className="container">
         <h2 className="text-center mb-3 mt-3">Login</h2>
-        <form onSubmit="">
+        <form>
           <input
             className="form-control"
             type="email"
