@@ -3,7 +3,7 @@ import "./App.css";
 import Header from "./components/Header/Header";
 import Inventory from "./components/Inventory/Inventory";
 import Login from "./components/Login/Login";
-import Register from "./components/Login/Register/Register";
+import Register from "./components/Register/Register";
 import NotFound from "./components/NotFound/NotFound";
 import OrderReview from "./components/OrderReview/OrderReview";
 import PlaceOrder from "./components/PlaceOrder/PlaceOrder";
