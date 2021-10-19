@@ -4,25 +4,44 @@ import { Link } from "react-router-dom";
 const Register = () => {
   return (
     <div className="login-form">
-      <div>
-        <h2>Register</h2>
+      <div className="container">
+        <h2 className="text-center mb-3 mt-3">Register: Create Account</h2>
         <form onSubmit="">
-          <input type="email" name="" placeholder="Your email" />
+          <input
+            className="form-control"
+            type="email"
+            name=""
+            placeholder="Your email"
+          />
           <br />
-          <input type="password" name="" placeholder="Enter password" />
+          <input
+            className="form-control"
+            type="password"
+            name=""
+            placeholder="Enter password"
+          />
           <br />
-          <input type="password" name="" placeholder="Re-enter Password" />
+          <input
+            className="form-control"
+            type="password"
+            name=""
+            placeholder="Re-enter Password"
+          />
           <br />
-          <button type="submit" className="btn-regular mt-3">
-            Register
-          </button>
+          <div className="text-center">
+            <button type="submit" className="btn-regular mt-3">
+              Register
+            </button>
+          </div>
           <br />
         </form>
-        <p>
-          Already have an account? <Link to="/login">Login</Link>
-        </p>
-        <div>--------------or------------</div>
-        <button className="btn-regular">Google Sign In</button>
+        <div className="text-center">
+          <p>
+            Already have an account? <Link to="/login">Login</Link>
+          </p>
+          <div>--------------or------------</div>
+          <button className="btn-regular">Google Sign In</button>
+        </div>
       </div>
     </div>
   );
