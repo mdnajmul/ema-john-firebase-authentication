@@ -11,13 +11,19 @@ const Shop = () => {
   const [cart, setCart] = useCart(products);
   // products to be rendered on the UI
   const [displayProducts, setDisplayProducts] = useState([]);
+  const [page, setPage] = useState(0);
+  const [pageCount, setPageCount] = useState(0);
 
   useEffect(() => {
     fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
-        setDisplayProducts(data);
+        setProducts(data.products);
+        setDisplayProducts(data.products);
+        //set total page
+        const count = data.count;
+        const pageNumber = Math.ceil(count / 10);
+        setPageCount(pageNumber);
       });
   }, []);
 
@@ -65,6 +71,17 @@ const Shop = () => {
               handleAddToCart={handleAddToCart}
             ></Product>
           ))}
+          <div className="pagination">
+            {[...Array(pageCount).keys()].map((number) => (
+              <button
+                key={number}
+                onClick={() => setPage(number)}
+                className={number === page ? "selected" : ""}
+              >
+                {number + 1}
+              </button>
+            ))}
+          </div>
         </div>
         <div className="cart-container">
           <Cart cart={cart}>
