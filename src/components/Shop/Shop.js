@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Shop = () => {
   const [products, setProducts] = useState([]);
-  const [cart, setCart] = useCart(products);
+  const [cart, setCart] = useCart();
   // products to be rendered on the UI
   const [displayProducts, setDisplayProducts] = useState([]);
   const [page, setPage] = useState(0);
