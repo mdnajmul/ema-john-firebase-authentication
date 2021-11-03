@@ -13,19 +13,20 @@ const Shop = () => {
   const [displayProducts, setDisplayProducts] = useState([]);
   const [page, setPage] = useState(0);
   const [pageCount, setPageCount] = useState(0);
+  const size = 10;
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.products);
         setDisplayProducts(data.products);
         //set total page
         const count = data.count;
-        const pageNumber = Math.ceil(count / 10);
+        const pageNumber = Math.ceil(count / size);
         setPageCount(pageNumber);
       });
-  }, []);
+  }, [page]);
 
   const handleAddToCart = (product) => {
     const exists = cart.find((pd) => pd.key === product.key);
