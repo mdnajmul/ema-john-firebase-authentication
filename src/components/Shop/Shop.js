@@ -16,7 +16,9 @@ const Shop = () => {
   const size = 10;
 
   useEffect(() => {
-    fetch(`http://localhost:5000/products?page=${page}&&size=${size}`)
+    fetch(
+      `https://shrouded-eyrie-97974.herokuapp.com/products?page=${page}&&size=${size}`
+    )
       .then((res) => res.json())
       .then((data) => {
         setProducts(data.products);
